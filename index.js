@@ -64,6 +64,7 @@ const CircularPicker = ({
   borderColor,
   children,
   onChange,
+  panResponder,
 }) => {
   const [pos, setPos] = useState(percentToPos(defaultPos));
   const circle = useRef(null);
@@ -73,7 +74,7 @@ const CircularPicker = ({
   const center = (radius + strokeWidth / 2);
 
   const gradient = selectGradient(gradients, pos);
-  
+
   useEffect(()=>{
     setPos(percentToPos(defaultPos));
   }, [defaultPos]);
@@ -112,7 +113,8 @@ const CircularPicker = ({
         setPos(newPos);
         onChange(posToPercent(newPos));
       });
-    }
+    },
+    ...panResponder
   });
 
   const d = `
