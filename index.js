@@ -75,7 +75,7 @@ const CircularPicker = ({
 
   const gradient = selectGradient(gradients, pos);
 
-  useEffect(()=>{
+  useEffect(() => {
     setPos(percentToPos(defaultPos));
   }, [defaultPos]);
 
@@ -94,7 +94,7 @@ const CircularPicker = ({
   const goToPercent = (p) => {
     const newPos = percentToPos(p);
     setPos(newPos);
-    onChange(posToPercent(newPos));
+    onChange(posToPercent(newPos), true);
   }
 
   const pan = PanResponder.create({
